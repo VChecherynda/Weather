@@ -5,26 +5,34 @@ require 'pry'
 uri = "https://www.gismeteo.ua/weather-kyiv-4944/month/"
 doc = Nokogiri::HTML(open(uri))
 
-# f = File.open('weather.txt','w')
+f = File.open('weather.txt','w')
 
-doc.search('.month_title').each do |month|
-  month_title = month.text
+month_titles = doc.search('.fcontent h3')
+weather_rows = doc.search('.fcontent table.calendar')
+  
+month_titles.each do |month|
+  month_title = /[А-яа-я]+/.match(month.text.downcase)
 
-  weeks_row = month.next_element
+  weather_rows.each do |row, i|
+    weeks = row.search('tr')
 
-  weeks_row.each do |day|
+    weeks.each do |day|
 
-    binding.pry 
+      day_of_the_week = day.search('td')
 
-    day_title = day.search('.day').text
+      day_of_the_week.each do |item|
+        if item.search('.link-day .day').text.length > 0
+          day_title = item.search('.link-day .day').text
+          max_temp = item.search('.link-day .temp.max .m_temp.c').text
+          min_temp = item.search('.link-day .temp.min .m_temp.c').text
 
-    day.each do |item|
-      puts("Weather #{month_title} #{day_title}")
+          f.write("#{day_title} #{month_title}, min #{min_temp} C, max #{max_temp} CC \n")
+
+        end
+      end
     end
-      # min = item.search('.temp.min m_temp.c')
-      # max = item.search('.temp.max m_temp.c')
   end
 end
 
-# f.close
+f.close
 
