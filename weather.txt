@@ -1,28 +1,28 @@
-16 январь, min −6 C, max −2 C 
-17 январь, min −6 C, max +1 C 
-18 январь, min 0 C, max +3 C 
-19 январь, min −7 C, max +1 C 
-20 январь, min −9 C, max −6 C 
-21 январь, min −8 C, max −5 C 
-22 январь, min −10 C, max −7 C 
-23 январь, min −12 C, max −10 C 
-24 январь, min −15 C, max −9 C 
-25 январь, min −11 C, max −2 C 
-26 январь, min −1 C, max +2 C 
-27 январь, min −6 C, max −3 C 
-28 январь, min −5 C, max −3 C 
-29 январь, min −6 C, max +4 C 
-16 февраль, min −6 C, max −2 C 
-17 февраль, min −6 C, max +1 C 
-18 февраль, min 0 C, max +3 C 
-19 февраль, min −7 C, max +1 C 
-20 февраль, min −9 C, max −6 C 
-21 февраль, min −8 C, max −5 C 
-22 февраль, min −10 C, max −7 C 
-23 февраль, min −12 C, max −10 C 
-24 февраль, min −15 C, max −9 C 
-25 февраль, min −11 C, max −2 C 
-26 февраль, min −1 C, max +2 C 
-27 февраль, min −6 C, max −3 C 
-28 февраль, min −5 C, max −3 C 
-29 февраль, min −6 C, max +4 C 
+17 январь , min −6 C, max +1 C 
+18 январь , min 0 C, max +3 C 
+19 январь , min −7 C, max −1 C 
+20 январь , min −7 C, max −3 C 
+21 январь , min −6 C, max −3 C 
+22 январь , min −13 C, max −7 C 
+23 январь , min −14 C, max −9 C 
+24 январь , min −18 C, max −12 C 
+25 январь , min −19 C, max −9 C 
+26 январь , min −12 C, max −3 C 
+27 январь , min −6 C, max −3 C 
+28 январь , min −5 C, max −3 C 
+29 январь , min −6 C, max +4 C 
+30 январь , min +1 C, max +5 C 
+17 февраль , min −6 C, max +1 C 
+18 февраль , min 0 C, max +3 C 
+19 февраль , min −7 C, max −1 C 
+20 февраль , min −7 C, max −3 C 
+21 февраль , min −6 C, max −3 C 
+22 февраль , min −13 C, max −7 C 
+23 февраль , min −14 C, max −9 C 
+24 февраль , min −18 C, max −12 C 
+25 февраль , min −19 C, max −9 C 
+26 февраль , min −12 C, max −3 C 
+27 февраль , min −6 C, max −3 C 
+28 февраль , min −5 C, max −3 C 
+29 февраль , min −6 C, max +4 C 
+30 февраль , min +1 C, max +5 C 

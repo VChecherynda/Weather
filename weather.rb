@@ -5,34 +5,56 @@ require 'pry'
 uri = "https://www.gismeteo.ua/weather-kyiv-4944/month/"
 doc = Nokogiri::HTML(open(uri))
 
-f = File.open('weather.txt','w')
+@f = File.open('weather.txt','w')
 
-month_titles = doc.search('.fcontent h3')
-weather_rows = doc.search('.fcontent table.calendar')
-  
-month_titles.each do |month|
-  month_title = /[А-яа-я]+/.match(month.text.downcase)
+@month_titles = doc.search('.fcontent h3')
+@weather_rows = doc.search('.fcontent table.calendar')
 
-  weather_rows.each do |row, i|
-    weeks = row.search('tr')
+def filter_month_title(title)
+  /[а-я]+/.match(title.downcase)
+end
 
-    weeks.each do |day|
+def generate_month
+  @month_titles.each do |month|
+    month_title = filter_month_title(month.content)
+    generate_rows(month_title)
+  end
+end
 
-      day_of_the_week = day.search('td')
+def generate_rows(month)
+  @weather_rows.each do |row|
+    generate_weeks(row,month)
+  end
+end
 
-      day_of_the_week.each do |item|
-        if item.search('.link-day .day').text.length > 0
-          day_title = item.search('.link-day .day').text
-          max_temp = item.search('.link-day .temp.max .m_temp.c').text
-          min_temp = item.search('.link-day .temp.min .m_temp.c').text
+def generate_weeks(row,month)
+  weeks = row.search('tr')
+  weeks.each do |day|
+    generate_day(day,month)
+  end
+end
 
-          f.write("#{day_title} #{month_title}, min #{min_temp} C, max #{max_temp} CC \n")
-
-        end
-      end
+def generate_day(day,month)
+  day_of_the_week = day.search('td')
+  day_of_the_week.each do |item|
+    if item.search('.link-day .day').text.length > 0
+      form_day_temperature(item,month)
     end
   end
 end
 
-f.close
+def handle_string(param,css_class)
+  param.search(css_class).text
+end
+
+def form_day_temperature(day,month)
+  day_title = handle_string(day,'.link-day .day')
+  max_temp = handle_string(day,'.link-day .temp.max .m_temp.c')
+  min_temp = handle_string(day,'.link-day .temp.min .m_temp.c')
+  @f.write("#{day_title} #{month} , min #{min_temp} C, max #{max_temp} C \n")
+end
+
+generate_month
+
+@f.close
 
